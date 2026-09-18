@@ -13,6 +13,20 @@ const orange = '#ff8b3d'
 const yellow = '#ffe66d'
 const red = '#ff2e5b'
 
+// Self-hosted display face for headings/branding, in the outrun-signage
+// style; body text stays on the system stack for legibility in dense lists
+const AUDIOWIDE_FONT_PATH = 'fonts/Audiowide-Regular.woff2'
+const headingFont = '"Audiowide", sans-serif'
+const bodyFont = [
+  '-apple-system',
+  'BlinkMacSystemFont',
+  '"Segoe UI"',
+  'Roboto',
+  'Helvetica',
+  'Arial',
+  'sans-serif',
+].join(',')
+
 // For Album, Playlist play button
 const musicListActions = {
   alignItems: 'center',
@@ -80,7 +94,27 @@ export default {
       paper: surface,
     },
   },
+  typography: {
+    fontFamily: bodyFont,
+    h1: { fontFamily: headingFont },
+    h2: { fontFamily: headingFont },
+    h3: { fontFamily: headingFont },
+    h4: { fontFamily: headingFont },
+    h5: { fontFamily: headingFont },
+    h6: { fontFamily: headingFont },
+  },
   overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': {
+          fontFamily: 'Audiowide',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          fontDisplay: 'swap',
+          src: `url('${AUDIOWIDE_FONT_PATH}') format('woff2')`,
+        },
+      },
+    },
     MuiPaper: {
       root: {
         color: foreground,
@@ -241,7 +275,8 @@ export default {
         boxShadow: 'none',
       },
       title: {
-        fontWeight: 700,
+        fontFamily: headingFont,
+        fontWeight: 400,
         color: foreground,
       },
       details: {
@@ -260,7 +295,8 @@ export default {
         paddingTop: '1.5rem',
       },
       recordName: {
-        fontWeight: 700,
+        fontFamily: headingFont,
+        fontWeight: 400,
         color: foreground,
       },
       recordArtist: {
@@ -301,6 +337,8 @@ export default {
     NDLogin: {
       systemNameLink: {
         color: pink,
+        fontFamily: headingFont,
+        fontSize: '1.5rem',
       },
       welcome: {
         color: foreground,

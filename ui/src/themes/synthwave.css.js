@@ -1,5 +1,18 @@
 const stylesheet = `
 
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/Audiowide-Regular.woff2') format('woff2');
+}
+
+/* Now playing title: heading face */
+.react-jinke-music-player-main .music-player-panel .panel-content .player-content .audio-title {
+    font-family: 'Audiowide', sans-serif;
+}
+
 /* Icon hover: hot pink */
 .react-jinke-music-player-main svg:active, .react-jinke-music-player-main svg:hover {
     color: #ff2e97

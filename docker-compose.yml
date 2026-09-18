@@ -1,0 +1,15 @@
+services:
+  navidrome-synthwave-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: navidrome-synthwave-test
+    restart: unless-stopped
+    ports:
+      - "4535:4533"
+    volumes:
+      - navidrome-synthwave-test-data:/data
+      - /volume1/media/music/music/:/music:ro
+
+volumes:
+  navidrome-synthwave-test-data:
